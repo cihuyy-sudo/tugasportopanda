@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Batman — My Profile</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+    @font-face {
+      font-family: 'BatmanFont';
+      src: url("batmfa__.ttf");
+      font-style: normal;
+    }
+
+    :root {
+      --font-display: 'BatmanFont', 'Bebas Neue', 'Impact', sans-serif;
+      --font-body: 'Rajdhani', 'Trebuchet MS', 'Segoe UI', sans-serif;
+      --font-mono: 'Share Tech Mono', 'Courier New', 'Lucida Console', monospace;
+      --bat-yellow: #FFD700;
+      --bat-yellow-dark: #E6B800;
+      --bat-yellow-glow: #FFD70066;
+      --bat-black: #0a0a0a;
+      --bat-dark: #111111;
+      --bat-gray: #1c1c1c;
+      --bat-mid: #2a2a2a;
+      --bat-light: #888;
+      --bat-white: #f0e6c8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bat-black);
+      color: var(--bat-white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+  
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      background: var(--bat-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 1000;
+      box-shadow: 0 4px 30px rgba(255,215,0,0.4);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--bat-black);
+      letter-spacing: 6px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .bat-logo {
+      width: 60px;
+      height: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: var(--bat-black);
+      text-decoration: none;
+      padding: 6px 18px;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      border-color: var(--bat-black);
+      background: var(--bat-black);
+      color: var(--bat-yellow);
+    }
+
+    #home {
+      min-height: 100vh;
+      padding-top: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 60%, #1a1500 0%, #0a0a0a 70%);
+    }
+
+    .hero-bg-bat {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.04;
+      width: 900px;
+    }
+
+    .city-silhouette {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
+      background:
+        linear-gradient(transparent 0%, #111 100%);
+    }
+
+    .skyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      overflow: hidden;
+    }
+
+    .skyline::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 160px;
+      background:
+   
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 0 100% / 30px 120px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 40px 100% / 50px 90px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 100px 100% / 20px 140px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 130px 100% / 60px 100px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 200px 100% / 40px 130px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 250px 100% / 25px 80px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 280px 100% / 70px 150px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 360px 100% / 30px 110px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 400px 100% / 55px 95px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 470px 100% / 80px 160px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 560px 100% / 35px 120px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 610px 100% / 50px 85px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 670px 100% / 45px 135px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 730px 100% / 60px 100px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 800px 100% / 30px 115px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 840px 100% / 80px 90px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 930px 100% / 40px 145px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 980px 100% / 55px 110px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 1050px 100% / 35px 130px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 1100px 100% / 70px 95px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 1180px 100% / 45px 150px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 1240px 100% / 60px 105px no-repeat,
+        linear-gradient(var(--bat-dark) 0%, var(--bat-dark) 100%) 1310px 100% / 80px 125px no-repeat;
+    }
+
+    .spotlight {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255,215,0,0.15), transparent);
+      filter: blur(40px);
+      width: 200px;
+      animation: flicker 4s ease-in-out infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      color: var(--bat-yellow);
+      font-size: 0.85rem;
+      letter-spacing: 5px;
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 8rem);
+      color: var(--bat-white);
+      letter-spacing: 12px;
+      line-height: 1;
+      text-shadow: 0 0 60px rgba(255,215,0,0.2);
+    }
+
+    .hero-name span {
+      color: var(--bat-yellow);
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--bat-light);
+      letter-spacing: 4px;
+      margin-top: 12px;
+      text-transform: uppercase;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 2px;
+      background: var(--bat-yellow);
+      margin: 24px auto;
+      box-shadow: 0 0 12px var(--bat-yellow);
+    }
+
+    .hero-desc {
+      max-width: 480px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #aaa;
+    }
+
+    .scroll-hint {
+      margin-top: 40px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: var(--bat-yellow);
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(6px); }
+    }
+
+   
+    section {
+      padding: 100px 0 80px;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 6px;
+      color: var(--bat-yellow);
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 6px;
+      color: var(--bat-white);
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: var(--bat-yellow);
+    }
+
+
+    #about {
+      background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0a 100%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-bio {
+      font-size: 1.15rem;
+      line-height: 2;
+      color: #bbb;
+    }
+
+    .about-bio p + p { margin-top: 20px; }
+
+    .about-bio strong {
+      color: var(--bat-yellow);
+      font-weight: 700;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--bat-gray);
+      border: 1px solid #2a2a2a;
+      border-left: 3px solid var(--bat-yellow);
+      padding: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateX(6px);
+      box-shadow: -4px 0 20px var(--bat-yellow-glow);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--bat-yellow);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--bat-light);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    #music {
+      background: #0a0a0a;
+    }
+
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .music-card {
+      background: var(--bat-gray);
+      border: 1px solid #222;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .music-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--bat-yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .music-card:hover { transform: translateY(-6px); border-color: #444; }
+    .music-card:hover::before { transform: scaleX(1); }
+
+    .music-rank {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: #2a2a2a;
+      position: absolute;
+      top: 10px; right: 16px;
+      line-height: 1;
+    }
+
+    .music-genre {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--bat-yellow);
+      margin-bottom: 8px;
+    }
+
+    .music-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--bat-white);
+      margin-bottom: 4px;
+    }
+
+    .music-artist {
+      font-size: 0.9rem;
+      color: var(--bat-light);
+    }
+
+    .music-bars {
+      display: flex;
+      gap: 3px;
+      margin-top: 16px;
+      align-items: flex-end;
+      height: 24px;
+    }
+
+    .music-bar {
+      width: 4px;
+      background: var(--bat-yellow);
+      border-radius: 2px;
+      opacity: 0.5;
+      animation: barBounce var(--d, 0.8s) ease-in-out infinite alternate;
+    }
+
+    @keyframes barBounce {
+      from { transform: scaleY(0.3); }
+      to   { transform: scaleY(1); }
+    }
+
+    #hobbies {
+      background: linear-gradient(180deg, #0f0f0a 0%, #0a0a0a 100%);
+    }
+
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .hobby-card {
+      background: var(--bat-gray);
+      border: 1px solid #222;
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hobby-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 120%, rgba(255,215,0,0.07) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255,215,0,0.08);
+    }
+
+    .hobby-card:hover::after { opacity: 1; }
+
+    .hobby-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+      filter: grayscale(0.3);
+    }
+
+    .hobby-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 4px;
+      color: var(--bat-yellow);
+      margin-bottom: 10px;
+    }
+
+    .hobby-desc {
+      font-size: 0.95rem;
+      color: #888;
+      line-height: 1.7;
+    }
+
+    .hobby-tag {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 3px 12px;
+      border: 1px solid #333;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--bat-yellow);
+    }
+
+    /* ─── ARKHAM FEATURE ─── */
+    #arkham {
+      background: #080808;
+      border-top: 1px solid #1a1a00;
+      border-bottom: 1px solid #1a1a00;
+    }
+
+    .arkham-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .arkham-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .arkham-card {
+      background: var(--bat-gray);
+      border: 1px solid #1f1f00;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .arkham-card:hover {
+      border-color: var(--bat-yellow-dark);
+      transform: scale(1.02);
+    }
+
+    .arkham-number {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: #1e1e00;
+      position: absolute;
+      bottom: -10px; right: 16px;
+      line-height: 1;
+    }
+
+    .arkham-game {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      color: var(--bat-white);
+      margin-bottom: 8px;
+    }
+
+    .arkham-year {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: var(--bat-yellow);
+      margin-bottom: 12px;
+      opacity: 0.8;
+    }
+
+    .arkham-desc {
+      font-size: 0.95rem;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    .arkham-rating {
+      display: flex;
+      gap: 4px;
+      margin-top: 16px;
+    }
+
+    .star { color: var(--bat-yellow); font-size: 1rem; }
+    .star.dim { color: #333; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bat-dark);
+      border-top: 2px solid var(--bat-yellow);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 8px;
+      color: var(--bat-yellow);
+      margin-bottom: 8px;
+    }
+
+    .footer-quote {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #444;
+      letter-spacing: 3px;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── ACTIVE NAV ─── */
+    .nav-links a.active {
+      background: var(--bat-black);
+      color: var(--bat-yellow);
+      border-color: var(--bat-black);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a class="nav-brand" href="#home">
+      <img class="bat-logo" src="pngegg.png" >
+    </img>
+      BATMAN
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">HOME</a></li>
+      <li><a href="#about">TENTANG</a></li>
+      <li><a href="#music">MUSIK</a></li>
+      <li><a href="#hobbies">HOBBY</a></li>
+      <li><a href="#arkham">ARKHAM</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="spotlight"></div>
+    <div class="skyline"></div>
+    <div class="hero-content">
+      <p class="hero-tag">// GOTHAM CITY · IDENTITY FILE</p>
+      <h1 class="hero-name">GUNG<span>YOGA</span></h1>
+      <p class="hero-sub">Programmer · Gamer · WHO TF AM I</p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+          Hanya orang biasa yang selalu kepo sama banyak hal
+      </p>
+      <p class="scroll-hint">↓ SCROLL DOWN ↓</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label reveal">// IDENTITY FILE</p>
+      <h2 class="section-title reveal">TENTANG <span>AKU</span></h2>
+      <div class="about-grid">
+        <div class="about-bio reveal">
+          <p>
+            Nama panggilanku <strong>GungGa</strong> Hanya seorang mahasiswa Teknologi Informasi <strong>Biasa</strong>.
+          </p>
+          <p>
+           Kalo ga Ngegym ya Ngoding kalo engga ya main game <strong>Batman Arkham Series</strong> Game yang menurutku perlu otak buat sampe nyelesain misi dari Riddler.
+          </p>
+          <p>
+            Motto hidup <strong>"It's not who I am underneath, but what I do that defines me."</strong>
+          </p>
+        </div>
+        <div class="stat-grid reveal">
+          <div class="stat-card">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Arkham Games Selesai</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Jam Coding</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5x</div>
+            <div class="stat-label">Gym / Minggu</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Film Ditonton</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="section-inner">
+      <p class="section-label reveal">// SOUNDTRACK HIDUPKU</p>
+      <h2 class="section-title reveal">MUSIK <span>FAVORIT</span></h2>
+      <div class="music-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+
+        <div class="music-card reveal">
+          <div class="music-rank">01</div>
+          <div class="music-genre">OPM · INDIE POP</div>
+          <div class="music-title">Multo</div>
+          <div class="music-artist">Cup of Joe</div>
+          <div class="music-bars">
+            <div class="music-bar" style="height:80%;--d:0.6s"></div>
+            <div class="music-bar" style="height:100%;--d:0.8s"></div>
+            <div class="music-bar" style="height:60%;--d:0.5s"></div>
+            <div class="music-bar" style="height:90%;--d:0.9s"></div>
+            <div class="music-bar" style="height:70%;--d:0.7s"></div>
+            <div class="music-bar" style="height:100%;--d:0.6s"></div>
+          </div>
+        </div>
+
+        <div class="music-card reveal">
+          <div class="music-rank">02</div>
+          <div class="music-genre">INDIE R&B · CHILL</div>
+          <div class="music-title">Feel It</div>
+          <div class="music-artist">d4vd</div>
+          <div class="music-bars">
+            <div class="music-bar" style="height:100%;--d:0.7s"></div>
+            <div class="music-bar" style="height:60%;--d:0.5s"></div>
+            <div class="music-bar" style="height:90%;--d:0.8s"></div>
+            <div class="music-bar" style="height:70%;--d:0.6s"></div>
+            <div class="music-bar" style="height:100%;--d:0.9s"></div>
+            <div class="music-bar" style="height:80%;--d:0.7s"></div>
+          </div>
+        </div>
+
+        <div class="music-card reveal">
+          <div class="music-rank">03</div>
+          <div class="music-genre">INDIE · DREAM POP</div>
+          <div class="music-title">Iris Out</div>
+          <div class="music-artist">d4vd</div>
+          <div class="music-bars">
+            <div class="music-bar" style="height:60%;--d:0.9s"></div>
+            <div class="music-bar" style="height:100%;--d:0.6s"></div>
+            <div class="music-bar" style="height:80%;--d:0.7s"></div>
+            <div class="music-bar" style="height:90%;--d:0.8s"></div>
+            <div class="music-bar" style="height:70%;--d:0.5s"></div>
+            <div class="music-bar" style="height:100%;--d:0.9s"></div>
+          </div>
+        </div>
+
+        <div class="music-card reveal">
+          <div class="music-rank">04</div>
+          <div class="music-genre">POP · DARK ELECTRO</div>
+          <div class="music-title">Judas</div>
+          <div class="music-artist">Lady Gaga</div>
+          <div class="music-bars">
+            <div class="music-bar" style="height:100%;--d:0.6s"></div>
+            <div class="music-bar" style="height:80%;--d:0.8s"></div>
+            <div class="music-bar" style="height:100%;--d:0.7s"></div>
+            <div class="music-bar" style="height:60%;--d:0.9s"></div>
+            <div class="music-bar" style="height:90%;--d:0.5s"></div>
+            <div class="music-bar" style="height:70%;--d:0.7s"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section id="hobbies">
+    <div class="section-inner">
+      <p class="section-label reveal">// AKTIVITAS HARIAN</p>
+      <h2 class="section-title reveal">HOBBY <span>KU</span></h2>
+      <div class="hobby-grid">
+
+        <div class="hobby-card reveal">
+          <span class="hobby-icon">💻</span>
+          <div class="hobby-name">NGODING</div>
+          <p class="hobby-desc">Suka ngulik logika dan kodingan game yang aku mainin dan sekarang lagi progress belajar buat game di unity.</p>
+          <span class="hobby-tag">GAME DEV · LOGIC</span>
+        </div>
+
+        <div class="hobby-card reveal">
+          <span class="hobby-icon">🏋️</span>
+          <div class="hobby-name">GYM</div>
+          <p class="hobby-desc">Pinter doang ga cukup. badan juga harus kuat biar kaya Bruce Wayne</p>
+          <span class="hobby-tag">FITNESS · STRENGTH</span>
+        </div>
+
+        <div class="hobby-card reveal">
+          <span class="hobby-icon">🎮</span>
+          <div class="hobby-name">GAMING</div>
+          <p class="hobby-desc">Kalo lagi luang suka main game FPS atau Arkham Series Batman.</p>
+          <span class="hobby-tag">ARKHAM · ACTION RPG</span>
+        </div>
+
+        <div class="hobby-card reveal">
+          <span class="hobby-icon">🎬</span>
+          <div class="hobby-name">NONTON FILM</div>
+          <p class="hobby-desc">Suka nonton film Batman sampai nonton serial yang nerd perfectsionis kaya serial killer Dexter.</p>
+          <span class="hobby-tag">THRILLER · SCI-FI</span>
+        </div>
+
+        <div class="hobby-card reveal">
+          <span class="hobby-icon">🧠</span>
+          <div class="hobby-name">BELAJAR</div>
+          <p class="hobby-desc">Selalu suka belajar hal baru tapi kalo menurutku kurang menantang kadang aku ngantuk.</p>
+          <span class="hobby-tag">SELF-IMPROVEMENT</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ARKHAM SERIES -->
+  <section id="arkham">
+    <div class="arkham-inner">
+      <p class="section-label reveal">// GAME FAVORIT SEPANJANG MASA</p>
+      <h2 class="section-title reveal">ARKHAM <span>SERIES</span></h2>
+      <div class="arkham-grid">
+
+        <div class="arkham-card reveal">
+          <div class="arkham-number">01</div>
+          <div class="arkham-year">// 2009 · ROCKSTEADY STUDIOS</div>
+          <div class="arkham-game">Batman: Arkham Asylum</div>
+          <p class="arkham-desc">Permulaan dari segalanya. Atmosfer horror yang mencekam, gameplay yang revolusioner. Game ini mengubah standar superhero games selamanya.</p>
+          <div class="arkham-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            <span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+
+        <div class="arkham-card reveal">
+          <div class="arkham-number">02</div>
+          <div class="arkham-year">// 2011 · ROCKSTEADY STUDIOS</div>
+          <div class="arkham-game">Batman: Arkham City</div>
+          <p class="arkham-desc">Open world Gotham pertamaku. Cerita yang lebih dalam, villain yang ikonik. Joker di sini adalah penampilan terbaik karakter tersebut.</p>
+          <div class="arkham-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            <span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+
+        <div class="arkham-card reveal">
+          <div class="arkham-number">03</div>
+          <div class="arkham-year">// 2013 · WB GAMES MONTREAL</div>
+          <div class="arkham-game">Batman: Arkham Origins</div>
+          <p class="arkham-desc">Prequel yang underrated. Malam Natal paling berbahaya di Gotham. Pertarungan dengan Deathstroke adalah salah satu boss fight terbaik.</p>
+          <div class="arkham-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            <span class="star">★</span><span class="star dim">★</span>
+          </div>
+        </div>
+
+        <div class="arkham-card reveal">
+          <div class="arkham-number">04</div>
+          <div class="arkham-year">// 2015 · ROCKSTEADY STUDIOS</div>
+          <div class="arkham-game">Batman: Arkham Knight</div>
+          <p class="arkham-desc">Penutup yang epik. Batmobile mechanics, Gotham yang gelap dan megah. Reveal Arkham Knight adalah twist yang tidak pernah kulupakan.</p>
+          <div class="arkham-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            <span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">🦇 BATMAN</div>
+    <p class="footer-quote">// "I am vengeance. I am the night. I am Batman." —</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))
+          ?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
